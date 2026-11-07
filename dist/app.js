@@ -1,8 +1,9 @@
 'use strict';
 const $=s=>document.querySelector(s);
-const defaults={name:'Muharramxon',wish:'Happy 19th birthday to a truly wonderful soul.\nMay this new chapter bring you gentle days, brave dreams, and people who make you feel loved. May your smile stay bright, your heart stay hopeful, and every little wish find its way to you.\nYou deserve a beautiful year, and so much happiness.',sender:'From: The person who was bad to everyone'};
+const defaults={name:'Muharramxon',wish:'Happy 19th birthday to a truly wonderful soul.\nMay this new chapter bring you gentle days, brave dreams, and people who make you feel loved. May your smile stay bright, your heart stay hopeful, and every little wish find its way to you.\nYou deserve a beautiful year, and so much happiness.',sender:'From someone taking steps toward better habits'};
 let data={...defaults};
 try{const saved=JSON.parse(localStorage.getItem('muharramxon-letter-v2')||'null');if(saved)data={...data,...saved};const params=new URLSearchParams(location.hash.slice(1));for(const key of Object.keys(defaults))if(params.has(key))data[key]=params.get(key).slice(0,key==='wish'?500:90);}catch{}
+if(data.sender==='From: The person who was bad to everyone')data.sender=defaults.sender;
 function renderText(){$('#heading').textContent=`Happy Birthday, ${data.name}!`;$('#message').textContent=data.wish;$('#signature').textContent=data.sender;}
 renderText();
 $('#edit').onclick=()=>{for(const [id,key] of [['name','name'],['wish','wish'],['sender','sender']])$('#'+id).value=data[key];$('#editor').showModal();};
@@ -32,7 +33,7 @@ points.forEach((p,i)=>{const cols=57,ex=(i%cols-28)*5.6,ey=(Math.floor(i/cols)-1
 for(const star of stars){let v=reduced?0:time;const alpha=(.2+.8*Math.max(0,Math.sin(v*1.4+star.p)))*.48*build;ctx.fillStyle=`rgba(161,181,178,${alpha})`;ctx.fillText(star.s>.9?'+':'.',star.x,star.y-Math.sin(v*.3+star.p)*10);}
 if(morph>0){ctx.font='6px monospace';for(let j=0;j<14;j++){const y=-175+j*8;const span=65+Math.sin(j*2.1)*40;for(let x=-span;x<span;x+=7){const alpha=(.11+.1*Math.sin(time*2+j+x*.025))*morph;ctx.fillStyle=`rgba(85,119,232,${alpha})`;ctx.fillText('·',x+Math.sin(j)*45,y);}}}
 $('#art').dataset.stage=time<3.4?'letter':time<6.5?'blooming':'rose';$('#art').dataset.particles=points.length;
-$('.greeting').classList.toggle('show',time>7.2);$('#scene').classList.toggle('bloomed',time>7.2);
+$('.greeting').classList.toggle('show',time>7.2);$('#scene').classList.toggle('bloomed',time>7.2);$('#surprises').hidden=!(time>7.2);$('#discover').hidden=!(time>7.2);
 }
 
 function drawGift(progress,t){
@@ -59,6 +60,6 @@ soundtrack.addEventListener('play',musicState);soundtrack.addEventListener('paus
 soundtrack.addEventListener('error',()=>{$('#music').textContent='Music unavailable';});
 startMusic();document.addEventListener('pointerdown',()=>{if(soundtrack.paused&&!musicMuted)startMusic();},{once:true});document.addEventListener('keydown',()=>{if(soundtrack.paused&&!musicMuted)startMusic();},{once:true});
 $('#openGift').onclick=()=>{opened=true;elapsed=0;paused=false;$('#scene').classList.add('opened');$('#scene').classList.remove('paused');$('#openGift').disabled=true;$('#pause').focus();startMusic();};
-$('#replay').onclick=()=>{elapsed=0;opened=false;paused=false;$('#pause').textContent='Ⅱ Pause';$('.greeting').classList.remove('show');$('#scene').classList.remove('bloomed','opened','paused');$('#openGift').disabled=false;$('#openGift').focus();};
+$('#replay').onclick=()=>{elapsed=0;opened=false;paused=false;$('#pause').textContent='Ⅱ Pause';$('.greeting').classList.remove('show');$('#scene').classList.remove('bloomed','opened','paused');$('#openGift').disabled=false;$('#openGift').focus();$('#surprises').hidden=true;$('#discover').hidden=true;};
 $('#pause').onclick=()=>{paused=!paused;$('#scene').classList.toggle('paused',paused);$('#pause').textContent=paused?'▷ Play':'Ⅱ Pause';};
 requestAnimationFrame(draw);
