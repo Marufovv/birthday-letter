@@ -4,3 +4,26 @@
 #discover{position:absolute;bottom:61px;left:50%;transform:translateX(-50%);font-size:10px;color:#cea68c;text-decoration:none;z-index:6;white-space:nowrap}#discover[hidden],#surprises[hidden]{display:none}#surprises{padding:75px 22px 65px;background:radial-gradient(ellipse at 50% 55%,#1c0c101f,#000 70%);text-align:center;border-top:1px solid #3b292133}#surprises h2{font-size:clamp(19px,3vw,27px);line-height:1.5;font-weight:400;color:#e9bca6;margin:17px 0}.constellation{max-width:1000px;margin:auto auto 110px}#nameStars{width:100%;height:260px;display:block}.star-caption,.instructions{font-size:11px;line-height:1.9;color:#aa9489;max-width:550px;margin:12px auto}.balloon-section{max-width:960px;margin:auto}#balloonCount{font-size:10px;letter-spacing:2px;color:#d2a58b;margin:30px 0}#balloons{display:grid;grid-template-columns:repeat(7,1fr);gap:15px 20px;max-width:850px;margin:20px auto 35px}.balloon{position:relative;justify-self:center;width:80px;height:130px;background:none;border:0;padding:0 0 30px;color:#ffe0c5;animation:balloonSway 4s ease-in-out infinite alternate;animation-delay:var(--delay)}.balloon-body{position:relative;display:flex;align-items:center;justify-content:center;width:78px;height:96px;border:1px solid var(--balloon-color);border-radius:49% 49% 46% 46%;background:radial-gradient(circle at 32% 24%,#ffe3c322,transparent 30%),radial-gradient(ellipse at bottom,var(--fill),#090607 78%);box-shadow:inset 0 0 20px var(--fill),0 0 17px var(--fill);transition:transform .3s,opacity .3s}.balloon-body:before{content:'· + ·';position:absolute;top:19px;left:12px;font-size:9px;opacity:.6}.balloon-body:after{content:'';position:absolute;bottom:-7px;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:8px solid var(--balloon-color)}.balloon:after{content:'';position:absolute;top:102px;left:39px;height:27px;border-left:1px dashed #91756a88}.balloon:hover .balloon-body{transform:translateY(-6px);filter:brightness(1.4)}.balloon.popped{animation:none}.balloon.popped .balloon-body{opacity:.35;transform:scale(.65);border-style:dashed;background:transparent;box-shadow:none}.balloon.popped:after{opacity:0}.balloon.pop-now:before{content:'✧  ·  ✦  ·  ✧';position:absolute;inset:25px -20px;color:#f7ba8d;animation:popSpark .65s ease-out forwards;pointer-events:none}.wish-card{max-width:620px;min-height:150px;padding:26px 25px;margin:20px auto;border:1px solid #68443166;background:radial-gradient(ellipse at top,#3b1e192f,#070505);border-radius:5px}.wish-card span{font-size:9px;letter-spacing:2px;color:#a97760}.wish-card p{color:#e5bfab;font-size:clamp(13px,2vw,17px);line-height:1.9;margin:17px 0 0}#allWishes{font-size:13px;line-height:2;color:#e4bd8b;max-width:580px;margin:30px auto}#wishCollection{max-width:620px;text-align:left;margin:25px auto;color:#ac9282;font-size:11px;line-height:1.8}#wishCollection summary{cursor:pointer;text-align:center;padding:10px}#wishList li{padding:7px 3px}#resetBalloons{margin-top:15px}@keyframes balloonSway{from{transform:rotate(-4deg) translateY(0)}to{transform:rotate(4deg) translateY(-7px)}}@keyframes popSpark{to{transform:scale(2);opacity:0}}@media(max-width:600px){#balloons{grid-template-columns:repeat(4,1fr);gap:15px 6px}.balloon{width:66px;height:111px}.balloon-body{width:64px;height:80px}.balloon:after{top:86px;left:32px;height:24px}#surprises{padding:60px 18px}#nameStars{height:180px}.constellation{margin-bottom:75px}#discover{font-size:9px;bottom:53px}.greeting{bottom:12%}}@media(prefers-reduced-motion:reduce){.balloon{animation:none!important}.balloon.pop-now:before{animation:none;display:none}}
 
 .wish-card{position:sticky;top:12px;z-index:8;background:#100b0bf5;backdrop-filter:blur(10px)}
+@media (max-width: 600px) {
+  /* Mobil ekranda memories qismini to'g'ri joylashishini ta'minlaymiz */
+  #memories {
+    position: relative !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Rasmlarni mobil ekran uchun to'g'rilaymiz */
+  .photo {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    margin: 20px auto !important;
+    display: block !important;
+    transform: none !important;
+    opacity: 1 !important;
+    width: 85% !important;
+    max-width: 280px !important;
+  }
+}
