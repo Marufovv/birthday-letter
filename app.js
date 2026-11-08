@@ -45,25 +45,10 @@ function drawGift(progress,t){
   for(let side of [-1,1])for(let a=0;a<Math.PI*2;a+=.12){ctx.fillStyle='#efb695';ctx.fillText('*',side*(31+29*Math.cos(a)),-100+19*Math.sin(a));}
   ctx.restore();ctx.restore();$('#art').dataset.stage=opened?'opening':'gift';
 }
-const photoCaptions=['LITTLE JOYS','YOUR BEAUTIFUL SMILE','TOGETHER','GOLDEN MOMENTS','WARM MEMORIES','DAYS TO REMEMBER','BEST DAY','UNFORGETTABLE DAYS'];
+const photoCaptions=['LITTLE JOYS','YOUR BEAUTIFUL SMILE','TOGETHER','GOLDEN MOMENTS','WARM MEMORIES','DAYS TO REMEMBER'];
 for (let i = 0; i < 8; i++) {
   const fig = document.createElement('figure');
-  fig.className = 'photo';
-  // Massivga yana 2 ta raqam qo'shildi (jami 8 ta bo'ldi)
-  fig.style.setProperty('--left', `${[5, 76, 17, 66, 1, 83, 35, 55][i]}%`);
-  fig.style.setProperty('--delay', `${-i * 6.8 - 4}s`);
-  fig.style.setProperty('--tilt', `${[-8, 7, 5, -6, -4, 8, 4, -3][i]}deg`);
-  
-  const img = document.createElement('img');
-  img.src = `photos/0${i + 1}.jpg`;
-  img.alt = `Birthday memory ${i + 1}: friends sharing a happy moment`;
-  img.decoding = 'async';
-  
-  const cap = document.createElement('figcaption');
-  cap.textContent = photoCaptions[i]; // photoCaptions massivida ham 8 ta matn borligiga e'tibor bering!
-  
-  fig.append(img, cap);
-  $('#memories').append(fig);
+ for(let i=0;i<8;i++){const fig=document.createElement('figure');fig.className='photo';fig.style.setProperty('--left',`${[5,76,17,66,1,83][i]}%`);fig.style.setProperty('--delay',`${-i*6.8-4}s`);fig.style.setProperty('--tilt',`${[-8,7,5,-6,-4,8][i]}deg`);const img=document.createElement('img');img.src=`photos/0${i+1}.jpg`;img.alt=`Birthday memory ${i+1}: friends sharing a happy moment`;img.decoding='async';const cap=document.createElement('figcaption');cap.textContent=photoCaptions[i];fig.append(img,cap);$('#memories').append(fig);}
 }for(let i=0;i<16;i++){const e=document.createElement('span');e.className='emoji';e.textContent=['✨','💖','🌷','🦋','🎂','💕','🌸','⭐'][i%8];e.style.setProperty('--left',`${8+(i*29)%85}%`);e.style.setProperty('--size',`${16+i%4*4}px`);e.style.setProperty('--delay',`${-i*1.5}s`);$('#emojis').append(e);}
 const birth=new Date('2007-11-09T00:00:00+05:00').getTime();
 function updateClock(){let n=Math.max(0,Math.floor((Date.now()-birth)/1000));$('#days').textContent=Math.floor(n/86400).toLocaleString('en-US');for(const [id,value] of [['hours',Math.floor(n/3600)%24],['minutes',Math.floor(n/60)%60],['seconds',n%60]])$('#'+id).textContent=String(value).padStart(2,'0');}
