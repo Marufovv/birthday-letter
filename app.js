@@ -80,3 +80,14 @@ $('#openGift').onclick=()=>{opened=true;elapsed=0;paused=false;$('#scene').class
 $('#replay').onclick=()=>{elapsed=0;opened=false;paused=false;$('#pause').textContent='Ⅱ Pause';$('.greeting').classList.remove('show');$('#scene').classList.remove('bloomed','opened','paused');$('#openGift').disabled=false;$('#openGift').focus();$('#surprises').hidden=true;$('#discover').hidden=true;};
 $('#pause').onclick=()=>{paused=!paused;$('#scene').classList.toggle('paused',paused);$('#pause').textContent=paused?'▷ Play':'Ⅱ Pause';};
 requestAnimationFrame(draw);
+@media (max-width: 768px) {
+  .photo {
+    /* Mobil ekranda rasmlar bir-biriga ustma-ust chiqib qolmasligi uchun positionni to'g'rilaymiz */
+    position: relative !important;
+    left: auto !important;
+    margin: 15px auto;
+    width: 80%;
+    max-width: 300px;
+    transform: none !important; /* Qiyshayishini olib tashlab, tekis turishini ta'minlaymiz */
+  }
+};
